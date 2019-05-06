@@ -1,0 +1,31 @@
+{
+  "name": "portfolio-theme",
+  "version": "0.0.1",
+  "description": "portfolio SASS Bootstrap Compilation",
+  "main": ".",
+  "scripts": {
+    "css:lint": "stylelint --config build/.stylelintrc --syntax scss \"scss/**/*.scss\" --cache --cache-location \"build/.stylelintcache/\"",
+    "css:prefix": "postcss --config build/postcss.config.js --replace \"*.css\" \"!*.min.css\"",
+    "css:compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 portfolio-theme/main.scss portfolio-theme/main.css",
+    "css:minify": "cleancss --level 1 --source-map --source-map-inline-sources --output style.min.css style.css",
+    "css": "npm run css:lint && npm run css:compile && npm run css:prefix && npm run css:minify",
+    "css:watch": "node-sass portfolio-theme/main.scss -wo portfolio-theme/"
+  },
+  "author": "Esig",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.4.3",
+    "clean-css-cli": "^4.2.1",
+    "node-sass": "^4.11.0",
+    "postcss-cli": "^6.0.1",
+    "stylelint": "^9.9.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^2.0.0",
+    "stylelint-scss": "^3.4.1",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}
